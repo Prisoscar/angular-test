@@ -1,0 +1,4 @@
+<h2>Lista spesa genitore</h2>
+<app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
+<app-totale-spesa [lista] = "lista"></app-totale-spesa>
+<app-form-spesa (listaChange) = "addElement($event)"></app-form-spesa>

@@ -3,14 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ListaSpesaWrapperComponent } from './lista-spesa-wrapper/lista-spesa-wrapper.component';
+import { ListaSpesaComponent } from './lista-spesa/lista-spesa.component';
+import { FormSpesaComponent } from './form-spesa/form-spesa.component';
+import { TotaleSpesaComponent } from './totale-spesa/totale-spesa.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ListaSpesaWrapperComponent,
+    ListaSpesaComponent,
+    FormSpesaComponent,
+    TotaleSpesaComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
