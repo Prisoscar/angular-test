@@ -15,13 +15,18 @@ export class ListaSpesaWrapperComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    
   }
 
   deleteElement (index: any) : void {
+    console.log(index);
     this.lista.splice(index, 1);
+    this.lista = this.lista.concat([]);
   }
 
   addElement(element: any){
-    this.lista.push(element);
+    //this.lista.push(element);
+
+    this.lista = this.lista.concat([element]);
   }
 }
