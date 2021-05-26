@@ -10,8 +10,8 @@ export class ListaSpesaWrapperComponent implements OnInit {
 
   lista: ElementoLista[];
 
-  constructor() { 
-    this.lista = []; 
+  constructor() {
+    this.lista = [];
   }
 
   ngOnInit(): void {
@@ -23,5 +23,5 @@ export class ListaSpesaWrapperComponent implements OnInit {
 
   addElement(element: any){
     this.lista.push(element);
-  } 
+  }
 }

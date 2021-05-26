@@ -1,1 +1,15 @@
-<p>lista-spesa works!</p>
+<h3>Lista Spesa</h3>
+<table>
+  <tr>
+    <td>Nome</td>
+    <td>Quantità</td>
+    <td>prezzo</td>
+    <td></td>
+  </tr>
+  <tr *ngFor = "let elemento of lista; index as i">
+    <td>{{elemento.nome}}</td>
+    <td>{{elemento.quantita}}</td>
+    <td>{{elemento.prezzo}}</td>
+    <td><button (click)= "deleteElement(i)">Elimina</button></td>
+  </tr>
+</table>

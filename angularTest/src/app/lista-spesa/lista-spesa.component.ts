@@ -8,8 +8,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class ListaSpesaComponent implements OnInit {
 
-  @Input() lista!: ElementoLista[]; 
-  @Output() listaChange = new EventEmitter<number>(); 
+  @Input() lista!: ElementoLista[];
+  @Output() listaChange = new EventEmitter<number>();
 
   constructor() { }
 
@@ -18,5 +18,5 @@ export class ListaSpesaComponent implements OnInit {
 
   deleteElement(index: number){
     this.listaChange.emit(index);
-  } 
+  }
 }
