@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ElementoLista } from './elemento-lista';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Subscription } from 'rxjs';
+import { Lista } from './lista';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-spesa-wrapper',
@@ -11,41 +12,62 @@ import { Subscription } from 'rxjs';
 })
 export class ListaSpesaWrapperComponent implements OnInit {
 
-  lista: ElementoLista[];
-  configUrl = "http://localhost:3000/elementiLista";
+  idLista!: number;
+  lista!: ElementoLista[];
+  liste!: Lista[]; 
+  urlLista = "http://localhost:3000/elementiLista";
+  urlListe = "http://localhost:3000/liste";
+  selezione = false;
+  errore = false;
 
-  constructor(private http: HttpClient) {
-    this.lista = [];
+  constructor(private http: HttpClient,
+    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.initializeList();
+    console.log("init")
+    let idLista = this.route.snapshot.params.idLista;
+    if (idLista){
+      this.idLista = idLista;
+      this.selezione = true; 
+    } 
+    if(this.selezione)this.initializeList();
+    if(!this.selezione)this.getListe();
+  }
+
+  getListe(){
+    this.http.get<Lista[]>(this.urlListe).subscribe(res => {this.liste = res; console.log(this.liste)});
   }
 
   initializeList(){
-    this.http.get<ElementoLista []>(this.configUrl).subscribe(res => this.lista = res);
+    this.http.get<ElementoLista []>(this.urlLista + "?idLista=" + this.idLista).subscribe(res => this.lista = res);
   }
 
   addElementToList(element: ElementoLista){
-    this.http.post<ElementoLista>(this.configUrl, element).subscribe(res => console.log(res));
+    this.http.post<ElementoLista>(this.urlLista, element).subscribe(res =>{console.log(res)
+      this.initializeList();
+     });
+
   }
 
   deleteElementFromList(element: ElementoLista){
-    this.http.delete<ElementoLista>(this.configUrl + "/" + element.id).subscribe(res => console.log(res));
+    this.http.delete<ElementoLista>(this.urlLista + "/" + element.id).subscribe(res =>{console.log(res)
+      this.initializeList();
+     });
   }
 
   deleteElement (index: any) : void {
     console.log(index);
     this.deleteElementFromList(this.lista[index]);
-    this.initializeList();
-    //this.lista.splice(index, 1);
-    //this.lista = this.lista.concat([]);
   }
 
   addElement(element: any){
-    //this.lista.push(element);
     this.addElementToList(element);
-    this.initializeList();
-    //this.lista = this.lista.concat([element]);
   }
+
+  confirmList(){
+    if(this.idLista) this.selezione = true;
+    if(!this.idLista) this.errore = true;
+    console.log("lista scelta: " + this.idLista);
+  } 
 }

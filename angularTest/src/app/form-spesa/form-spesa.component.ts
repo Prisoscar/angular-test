@@ -1,5 +1,5 @@
 import { ElementoLista } from './../lista-spesa-wrapper/elemento-lista';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form-spesa',
@@ -8,8 +8,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class FormSpesaComponent implements OnInit {
 
+  @Input() idLista!: number; 
   @Output() listaChange = new EventEmitter<ElementoLista> ();
-  element = new ElementoLista("",0,0);
+  element = new ElementoLista(this.idLista,"",0,0);
 
   constructor() { }
 
@@ -18,6 +19,6 @@ export class FormSpesaComponent implements OnInit {
 
   addElement (){
     if(this.element.nome && this.element.prezzo && this.element.quantita) this.listaChange.emit(this.element);
-    this.element = new ElementoLista("",0,0);
+    this.element = new ElementoLista(this.idLista, "",0,0);
   }
 }

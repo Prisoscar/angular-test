@@ -1,4 +1,14 @@
 <h2>Lista spesa genitore</h2>
-<app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
-<app-totale-spesa [lista] = "lista"></app-totale-spesa>
-<app-form-spesa (listaChange) = "addElement($event)"></app-form-spesa>
+<div *ngIf = "!selezione">
+    <label for="liste">SelezionaLista</label>
+    <select name="liste" id = "liste" [(ngModel)]="idLista">
+        <option *ngFor = "let elemento of liste" [ngValue] = "elemento.id">{{elemento.nome}}</option>
+    </select>
+    <p *ngIf = "errore" style = "color:red" >Seleziona una lista</p>
+    <button (click) = "confirmList()">Conferma</button>
+</div>
+<!--div *ngIf = "selezione">
+    <app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
+    <app-totale-spesa [lista] = "lista"></app-totale-spesa>
+    <app-form-spesa [idLista] = "idLista" (listaChange) = "addElement($event)"></app-form-spesa>
+</div-->

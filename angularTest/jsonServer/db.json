@@ -1,10 +1,61 @@
 {
+  "liste": [
+    {
+      "id": 1,
+      "nome": "lista1"
+    },
+    {
+      "id": 2,
+      "nome": "lista2"
+    }
+  ],
   "elementiLista": [
     {
+      "idLista": 1,
       "id": 79877481541382400,
       "nome": "oggetti",
       "quantita": 3,
       "prezzo": 30
+    },
+    {
+      "idLista": 1,
+      "id": 89314803845910800,
+      "nome": "prova",
+      "quantita": 10,
+      "prezzo": 5
+    },
+    {
+      "idLista": 1,
+      "id": 30809232681470510,
+      "nome": "oggetto",
+      "quantita": 5,
+      "prezzo": 3
+    },
+    {
+      "idLista": 1,
+      "id": 6951224816452062,
+      "nome": "ddd",
+      "quantita": 10,
+      "prezzo": 5
+    },
+    {
+      "id": 27381625256885412,
+      "nome": "rsf",
+      "quantita": 3,
+      "prezzo": 4
+    },
+    {
+      "id": 80987636450722200,
+      "nome": "eee",
+      "quantita": 1,
+      "prezzo": 1
+    },
+    {
+      "idLista": 1,
+      "id": 28322344670454590,
+      "nome": "e",
+      "quantita": 5,
+      "prezzo": 5
     }
   ]
 }
