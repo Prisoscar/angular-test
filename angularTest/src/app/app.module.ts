@@ -9,6 +9,7 @@ import { FormSpesaComponent } from './form-spesa/form-spesa.component';
 import { TotaleSpesaComponent } from './totale-spesa/totale-spesa.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { SelettoreListaComponent } from './selettore-lista/selettore-lista.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListaSpesaWrapperComponent,
     ListaSpesaComponent,
     FormSpesaComponent,
-    TotaleSpesaComponent
+    TotaleSpesaComponent,
+    SelettoreListaComponent
   ],
   imports: [
     BrowserModule,

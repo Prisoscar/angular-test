@@ -10,11 +10,13 @@ export class FormSpesaComponent implements OnInit {
 
   @Input() idLista!: number; 
   @Output() listaChange = new EventEmitter<ElementoLista> ();
-  element = new ElementoLista(this.idLista,"",0,0);
+  element!: ElementoLista;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+
+  this.element = new ElementoLista(this.idLista,"",0,0);
   }
 
   addElement (){

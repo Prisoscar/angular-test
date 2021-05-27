@@ -1,0 +1,8 @@
+<div>
+    <label for="liste">SelezionaLista</label>
+    <select name="liste" id = "liste" [(ngModel)]="idLista">
+        <option *ngFor = "let elemento of liste" [ngValue] = "elemento.id">{{elemento.nome}}</option>
+    </select>
+    <p *ngIf = "errore" style = "color:red" >Seleziona una lista</p>
+    <button (click) = "confirmList()">Conferma</button>
+</div>
