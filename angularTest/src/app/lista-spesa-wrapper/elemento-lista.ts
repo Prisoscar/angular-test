@@ -1,6 +1,6 @@
 export class ElementoLista{
-    public idLista: number;
     public id: number;
+    public idLista: number;
     public nome: string;
     public prezzo: number;
     public quantita: number;

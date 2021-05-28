@@ -1,6 +1,17 @@
 <h2>Lista spesa genitore</h2>
-<div>
-    <app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
-    <app-totale-spesa [lista] = "lista"></app-totale-spesa>
-    <app-form-spesa [idLista] = "idLista" (listaChange) = "addElement($event)"></app-form-spesa>
+<div class = "wrapper">
+    <div class = "listComponent">
+        <app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
+        <app-totale-spesa [lista] = "lista"></app-totale-spesa>
+        <app-form-spesa [idLista] = "idLista" (listaChange) = "addElement($event)"></app-form-spesa>
+        <button (click) = "saveChanges()">Save Changes</button>
+    </div>
+    <div class = "confirmationForm" *ngIf = "guardForm">
+        <h3>You have unsaved changes!</h3>
+        <h3>Do you want to save befor exit?</h3>
+        <li class = "confirmationFormButtons">
+            <ul><button class = "confirmationFormButton" (click) = "isChangesConfirmed(true)">Salva ed esci</button></ul>
+            <ul><button class = "confirmationFormButton" (click) = "isChangesConfirmed(false)">esci senza salvare</button></ul>
+        </li>
+    </div>
 </div>
