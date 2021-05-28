@@ -105,7 +105,8 @@ export class ListaSpesaWrapperComponent implements OnInit {
   isChangesConfirmed(isConfirmed: boolean){
     console.log("ListaSpesaWrapperComponent.isChangesConfirmed => Has user confirmed changes before quit? " + isConfirmed);
     if(isConfirmed) this.saveChanges();
-    console.log("executing route");
+    console.log("executing route");    
+    this.changesOccured = false;
     this.router.navigate([this.nextStateUrl]);
   }
 
