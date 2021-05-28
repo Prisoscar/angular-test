@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angularTest';
+
+  constructor(){
+    console.log("Enable Json-server in jsonServer folder before executing app!");
+  }
 }

@@ -11,10 +11,25 @@
   ],
   "elementiLista": [
     {
-      "id": 39885653698438410,
-      "nome": "gdf",
-      "quantita": 76,
+      "idLista": 2,
+      "id": 86083811084458450,
+      "nome": "fdx",
+      "quantita": 5,
+      "prezzo": 5
+    },
+    {
+      "idLista": 2,
+      "id": 28051677000718932,
+      "nome": "gf",
+      "quantita": 6,
       "prezzo": 67
+    },
+    {
+      "idLista": 1,
+      "id": 66426065694076520,
+      "nome": "fy",
+      "quantita": 76,
+      "prezzo": 7
     }
   ]
 }

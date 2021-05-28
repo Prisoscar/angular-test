@@ -13,7 +13,11 @@ export class UnSavedListGuard implements CanDeactivate<ListaSpesaWrapperComponen
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
-      if(component.changesOccured) return window.confirm("You have unsaved changes. Do you want to exit without saving?");
+      nextState;
+      if (component.changesOccured) {
+        component.changeGuardForm(nextState);
+        return false;
+      }
       return true;
   }
   
