@@ -1,3 +1,30 @@
-<router-outlet></router-outlet>
-<!--app-lista-spesa-wrapper></app-lista-spesa-wrapper-->
-
+<div class="main-body">
+    <div class = "main-header">
+        <div class = "inner-main-header">
+                <mat-list class = "main-header-list">
+                    <mat-list-item class = "main-header-list-element">
+                        <!--img class = "logo-img" src="./assets/images/lista-logo.png" alt="logo"-->
+                        <!--button mat-icon-button class="main-header-button"-->
+                            <mat-icon class="main-header-icon" alt = "logo lista">receipt_long</mat-icon>
+                        <!--/button-->
+                    </mat-list-item>
+                    <mat-list-item class = "main-header-list-element">
+                        <div class = "main-header-message-div">
+                            <h1 class = "main-header-main-message" id = "first-title-word">Lista</h1>
+                            <h1 class = "main-header-main-message" id = "second-title-word">della</h1>
+                            <h1 class = "main-header-main-message" id = "third-title-word">spesa</h1>
+                        </div>
+                    </mat-list-item>
+                    <mat-list-item class = "main-header-list-element"></mat-list-item>
+                </mat-list>
+        </div>
+    </div>
+    <div class = "main-inner-body">
+        <router-outlet></router-outlet>
+    </div>
+    <div class = "main-footer">
+        <div class = "inner-footer">
+            <a class = "footer-element footer-link" href="https://github.com/Prisoscar/angular-test/issues" target="_blank">leave feedback</a>
+        </div>
+    </div>
+</div>

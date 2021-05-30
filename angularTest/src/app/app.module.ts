@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-//import { ReactiveFormsModule } from '@angular/forms'
+import { MaterialModule } from './material/material.module'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaSpesaWrapperComponent } from './lista-spesa-wrapper/lista-spesa-wrapper.component';
@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SelettoreListaComponent } from './selettore-lista/selettore-lista.component';
 import { UnSavedListGuard } from './guards/un-saved-list.guard';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,9 @@ import { UnSavedListGuard } from './guards/un-saved-list.guard';
     BrowserModule,
     AppRoutingModule,
     FormsModule, 
-    HttpClientModule//,
-    //ReactiveFormsModule
+    HttpClientModule, 
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [UnSavedListGuard],
   bootstrap: [AppComponent]

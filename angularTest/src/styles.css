@@ -1,1 +1,32 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { 
+    height: 100%;
+    /*background-color: #444;*/
+    /*background-color: #2f2f4e;*/
+ }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+label, p, button, h1, h2, h3, h4, h5, h6, input,table{
+    color: black;
+}
+
+.warning-button{
+    background-color: red;
+    color: white;
+}
+
+.primary-button{
+    background-color: white;
+    color: red;
+    border: 1px solid red !important;
+}
+
+.secondary-button{
+    background-color: white;
+    color: black;
+    border: 1px solid black !important;
+}

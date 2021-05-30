@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Lista } from '../lista-spesa-wrapper/lista';
 
@@ -13,7 +14,7 @@ export class SelettoreListaComponent implements OnInit {
   idLista!: number;
   errore = false;
   urlListe = "http://localhost:3000/liste";
-  liste!: Lista[]; 
+  liste!: Lista[];
 
   constructor(private http: HttpClient,
     private router: Router) { }
@@ -27,7 +28,11 @@ export class SelettoreListaComponent implements OnInit {
   }
 
   confirmList(){
+    console.log("SelettoreListaComponent.confirmList => Button pressed");
     if(this.idLista) this.router.navigate(["listaspesa/", this.idLista]);
-    if(!this.idLista) this.errore = true;
+    if(!this.idLista) {
+      this.errore = true;
+      console.log("SelettoreListaComponent.confirmList => Error triggered? " + this.errore);
+    }
   } 
 }

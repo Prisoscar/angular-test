@@ -1,6 +1,5 @@
-<h2>Lista spesa genitore</h2>
-<div class = "wrapper">
-    <div class = "listComponent">
+<div class = "list-wrapper">
+    <div class = "list-components">
         <app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
         <app-totale-spesa [lista] = "lista"></app-totale-spesa>
         <app-form-spesa [idLista] = "idLista" (listaChange) = "addElement($event)"></app-form-spesa>
@@ -8,13 +7,15 @@
         <br>
         <button (click) = "routeToListSelectionPage()">vai alla selezione delle liste</button>
     </div>
-    <div class = "confirmationForm" *ngIf = "guardForm">
+    <div class = "confirmation-form" *ngIf = "guardForm">
         <h3>You have unsaved changes!</h3>
         <h3>Do you want to save befor exit?</h3>
-        <li class = "confirmationFormButtons">
-            <ul><button class = "confirmationFormButton" (click) = "isChangesConfirmed(true)">Salva ed esci</button></ul>
-            <ul><button class = "confirmationFormButton" (click) = "isChangesConfirmed(false)">esci senza salvare</button></ul>
-            <ul><button class = "confirmationFormButton" (click) = "deleteRouting()">Annulla</button></ul>
-        </li>
+        <div class = "confirmation-form-buttons">
+            <button mat-raised-button class = "primary-button confirmation-form-button" (click) = "isChangesConfirmed(true)">Salva ed esci</button>
+            <button mat-raised-button class = "warning-button confirmation-form-button" (click) = "isChangesConfirmed(false)">esci senza salvare</button>
+        </div> 
+        <div class = "delete-form-button-wrapper">
+            <button mat-raised-button class = "secondary-button delete-form-button" (click) = "deleteRouting()">Annulla</button>
+        </div>
     </div>
 </div>

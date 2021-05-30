@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ElementoLista } from './elemento-lista';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router, UrlTree } from '@angular/router';
-import { forkJoin, Observable } from 'rxjs';
+import { concat, forkJoin, from, Observable, ObservableInput, of} from 'rxjs';
+import {concatMap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-lista-spesa-wrapper',
@@ -76,11 +77,11 @@ export class ListaSpesaWrapperComponent implements OnInit {
   saveChanges(){
     if (!this.changesOccured) return;   //in order to avoid useless rest calls
     console.log("ListaSpesaWrapperComponent.saveChanges => Saving changes to db.");
-    let observableBatchDelete: any []= [];
+    let observableBatchDelete: any [] = [];
     let observableBatchInsert: any []= [];
     this.listaIniziale.forEach(element => observableBatchDelete.push(this.http.delete<ElementoLista>(this.urlLista + "/" + element)));
     this.lista.forEach(elemento => observableBatchInsert.push(this.http.post<ElementoLista>(this.urlLista, elemento)));
-    console.log(observableBatchDelete);
+
     if (observableBatchDelete.length == 0) {
       console.log("ListaSpesaWrapperComponent.saveChanges => Inserting first element/s in an empty list.");
       forkJoin(observableBatchInsert).subscribe(res => {

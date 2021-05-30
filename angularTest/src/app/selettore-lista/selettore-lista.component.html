@@ -1,8 +1,12 @@
-<div>
-    <label for="liste">SelezionaLista</label>
-    <select name="liste" id = "liste" [(ngModel)]="idLista">
-        <option *ngFor = "let elemento of liste" [ngValue] = "elemento.id">{{elemento.nome}}</option>
-    </select>
-    <p *ngIf = "errore" style = "color:red" >Seleziona una lista</p>
-    <button (click) = "confirmList()">Conferma</button>
+<div class = "selettore-lista-body">
+    <div class = "list-selection-form-wrapper">
+        <mat-form-field class = "list-selection-field">
+            <mat-label class = "label-lists-selection">Seleziona una lista</mat-label>
+            <mat-select class = "select-list-selection" [(ngModel)]="idLista" required>
+                <mat-option *ngFor = "let elemento of liste" [value] = "elemento.id">{{elemento.nome}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-error *ngIf="errore" class = "error-label-lists-selection">Perfavore seleziona una lista</mat-error>
+            <button mat-raised-button class = "secondary-button confirm-button" (click) = "confirmList()">Conferma</button>
+    </div>
 </div>

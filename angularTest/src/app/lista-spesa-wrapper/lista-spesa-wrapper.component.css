@@ -1,0 +1,50 @@
+.list-wrapper{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.list-components{
+    border: 1px solid red;
+}
+
+.confirmation-form{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    right: 50%;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    min-width: 5in;
+    background-color: #fff;
+    padding: 0.5cm;
+    border: 0.1cm solid red;
+    border-radius: 0.4cm;
+    box-shadow: 0.05cm 0.1cm 0.3cm black;
+}
+
+.confirmation-form-buttons{
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5cm;
+    padding-bottom: 0.5cm;
+    width: 100%;
+}
+
+.confirmation-form-button{
+    margin: auto;
+    margin-left: 0.5cm;
+    margin-right: 0.5cm;
+    min-width: 5cm;
+}
+
+.delete-form-button-wrapper{
+    padding: 0.5cm;
+}
+
+.delete-form-button{
+    min-width: 5cm;
+}

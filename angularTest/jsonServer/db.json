@@ -12,24 +12,31 @@
   "elementiLista": [
     {
       "idLista": 2,
-      "id": 86083811084458450,
-      "nome": "fdx",
-      "quantita": 5,
-      "prezzo": 5
-    },
-    {
-      "idLista": 2,
-      "id": 28051677000718932,
-      "nome": "gf",
+      "id": 90370398596216500,
+      "nome": "tyu",
       "quantita": 6,
-      "prezzo": 67
+      "prezzo": 6
     },
     {
       "idLista": 1,
-      "id": 66426065694076520,
-      "nome": "fy",
-      "quantita": 76,
-      "prezzo": 7
+      "id": 65684510042641544,
+      "nome": "gfh",
+      "quantita": 9,
+      "prezzo": 9
+    },
+    {
+      "idLista": 1,
+      "id": 21083634265065356,
+      "nome": "fdg",
+      "quantita": 67,
+      "prezzo": 76
+    },
+    {
+      "idLista": 1,
+      "id": 78807294427414960,
+      "nome": "7fg",
+      "quantita": 4,
+      "prezzo": 4
     }
   ]
 }
