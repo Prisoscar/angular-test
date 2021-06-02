@@ -2,19 +2,16 @@
     display: flex;
     margin: auto;
     width: 100%;
-    padding-top: 3cm;
-    padding-bottom: 3cm;
+    padding-top: 113px;
+    padding-bottom: 113px;
 }
 
 .list-selection-form-wrapper{
     margin: auto;
-    padding: 1cm;
-    border-radius: 0.4cm;
-    border: 0.1cm solid red;
+    padding: 38px;
     display: flex;
     flex-direction: column;
-    min-width: 3in; 
-    box-shadow: 0.05cm 0.1cm 0.3cm black;
+    min-width: 288px; 
 }
 
 .list-selection-field{
@@ -29,11 +26,11 @@
 }
 
 .error-label-lists-selection{
-    margin-top: -0.3cm;
+    margin-top: -12px;
     font-size: 13px;
 }
 
 .confirm-button{
-    margin-top: 1cm;
-    margin-bottom: 0.5cm;
+    margin-top: 38px;
+    margin-bottom: 19px;
 }

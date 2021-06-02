@@ -38,10 +38,12 @@
     padding: 0.125cm;
     border-left: 12px double red;
     border-bottom: 2px solid red;
+    border-top: 0px solid #ff000000;
 }
 
 #second-title-word{
     padding: 0.125cm;
+    border-top: 2px solid #ff000000;
 }
 
 #third-title-word{

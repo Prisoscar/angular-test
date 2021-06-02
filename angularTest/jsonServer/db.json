@@ -19,24 +19,31 @@
     },
     {
       "idLista": 1,
-      "id": 65684510042641544,
-      "nome": "gfh",
-      "quantita": 9,
-      "prezzo": 9
+      "id": 46758074663571400,
+      "nome": "Pasta",
+      "quantita": 5,
+      "prezzo": 0.75
     },
     {
       "idLista": 1,
-      "id": 21083634265065356,
-      "nome": "fdg",
-      "quantita": 67,
-      "prezzo": 76
+      "id": 99544094911297470,
+      "nome": "Tonno in scatola",
+      "quantita": 10,
+      "prezzo": 1.3
     },
     {
       "idLista": 1,
-      "id": 78807294427414960,
-      "nome": "7fg",
-      "quantita": 4,
-      "prezzo": 4
+      "id": 24094101454399464,
+      "nome": "Pane",
+      "quantita": 2,
+      "prezzo": 1.5
+    },
+    {
+      "idLista": 1,
+      "id": 68496199163307830,
+      "nome": "Yogurt",
+      "quantita": 2,
+      "prezzo": 1
     }
   ]
 }

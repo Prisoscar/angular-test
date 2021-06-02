@@ -1,11 +1,11 @@
-.list-wrapper{
+.lista-spesa-wrapper-component-body{
     display: flex;
     flex-direction: column;
     position: relative;
+    width: 75%
 }
 
 .list-components{
-    border: 1px solid red;
 }
 
 .confirmation-form{
@@ -15,15 +15,13 @@
     margin: auto;
     left: 50%;
     right: 50%;
+    top: 400px;
     text-align: center;
     transform: translate(-50%, -50%);
-    top: 50%;
     min-width: 5in;
     background-color: #fff;
     padding: 0.5cm;
-    border: 0.1cm solid red;
-    border-radius: 0.4cm;
-    box-shadow: 0.05cm 0.1cm 0.3cm black;
+    z-index: 100;
 }
 
 .confirmation-form-buttons{

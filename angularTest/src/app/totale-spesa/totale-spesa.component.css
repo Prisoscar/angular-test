@@ -1,0 +1,21 @@
+.totale-spesa-component-body{
+    padding-top: 25px;
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    width: 100%;
+    padding-bottom: 15px;
+    max-width: 18in;
+    min-width: 10in;
+}
+
+.total{
+    text-align: left;
+    text-shadow: 2px 2px 5px #7c8371;
+    width: 25%;
+}
+
+.totatl-value{
+    text-shadow: 2px 2px 5px black;
+    border-bottom: 1px solid red;
+}

@@ -14,7 +14,9 @@ export class ListaSpesaWrapperComponent implements OnInit {
 
   idLista!: number;
   lista!: ElementoLista[];
-  listaIniziale: number [] = [];
+  elementiDaEliminare: number [] = [];
+  elementidaAggiungere: ElementoLista [] = [];
+  //listaIniziale: number [] = [];
   urlLista = "http://localhost:3000/elementiLista";
   guardForm = false;
   changesOccured = false;
@@ -30,7 +32,7 @@ export class ListaSpesaWrapperComponent implements OnInit {
     if (idList != null) this.idLista = + idList;
     this.route.data.subscribe(data => { 
       this.lista = data.lista;      //il nome lista è stato dato nel routing module
-      this.lista.forEach(elemento => this.listaIniziale.push(elemento.id));
+      //this.lista.forEach(elemento => this.listaIniziale.push(elemento.id));
       console.log("ListaSpesaWrapperComponent.ngOnInit.subscribe => list number " + this.idLista + " loaded.");
       });    
   }
@@ -56,9 +58,14 @@ export class ListaSpesaWrapperComponent implements OnInit {
   }
 
   //this method delete an element from list
-  deleteElement (index: any) : void {
-    console.log("ListaSpesaWrapperComponent.deleteElement => deleted this element from list:" + this.lista[index] + ".");
-    this.lista.splice(index, 1);
+  deleteElement (element: ElementoLista) : void {
+    try {
+      this.elementiDaEliminare.push(element.id);
+      this.lista.splice(this.lista.indexOf(element),1);
+      console.log("ListaSpesaWrapperComponent.deleteElement => deleted this element from list:" + element.id + ".");
+    }catch(e){
+      console.error("ListaSpesaWrapperComponent.deleteElement => error during deletion");
+    }    
     this.lista = this.lista.concat([]);
     this.changesOccured = true;
     //this.deleteElementFromList(this.lista[index]);
@@ -66,23 +73,30 @@ export class ListaSpesaWrapperComponent implements OnInit {
 
   //this method add an element to list
   addElement(element: any){
+    this.lista = this.lista.concat([element]);
+    this.elementidaAggiungere.push(element);
+    this.changesOccured = true;
     console.log("ListaSpesaWrapperComponent.addElement => added this element to list: ");
     console.log(element);
-    this.lista = this.lista.concat([element]);
-    this.changesOccured = true;
     //this.addElementToList(element);
   }
 
   //this method saves all changes on db
   saveChanges(){
-    if (!this.changesOccured) return;   //in order to avoid useless rest calls
+    if (!this.changesOccured) {
+      console.log("ListaSpesaWrapperComponent.saveChanges => there is nothing to save.")
+      return;   //in order to avoid useless rest calls
+    }
     console.log("ListaSpesaWrapperComponent.saveChanges => Saving changes to db.");
-    let observableBatchDelete: any [] = [];
-    let observableBatchInsert: any []= [];
-    this.listaIniziale.forEach(element => observableBatchDelete.push(this.http.delete<ElementoLista>(this.urlLista + "/" + element)));
-    this.lista.forEach(elemento => observableBatchInsert.push(this.http.post<ElementoLista>(this.urlLista, elemento)));
+    let observableBatch: any [] = [];
+    this.elementiDaEliminare.forEach(elemento => observableBatch.push(this.http.delete<ElementoLista>(this.urlLista + "/" + elemento)));
+    this.elementidaAggiungere.forEach(elemento => observableBatch.push(this.http.post<ElementoLista>(this.urlLista, elemento)));
 
-    if (observableBatchDelete.length == 0) {
+    forkJoin(observableBatch).subscribe(res => {
+      console.log("ListaSpesaWrapperComponent.saveChanges => saved successfully");
+      this.changesOccured = false;
+    })
+    /*if (observableBatchDelete.length == 0) {
       console.log("ListaSpesaWrapperComponent.saveChanges => Inserting first element/s in an empty list.");
       forkJoin(observableBatchInsert).subscribe(res => {
         console.log("ListaSpesaWrapperComponent.saveChanges.subscribe => insert forkjoin executed.");
@@ -92,7 +106,7 @@ export class ListaSpesaWrapperComponent implements OnInit {
             console.log("ListaSpesaWrapperComponent.saveChanges.subscribe => delete forkjoin executed.");
             forkJoin(observableBatchInsert).subscribe(res => console.log("ListaSpesaWrapperComponent.saveChanges.subscribe => insert forkjoin executed."))
             this.changesOccured = false;
-    });
+    });*/
   }
 
   /*saveChangesObs():Observable<any>{

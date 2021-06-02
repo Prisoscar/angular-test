@@ -1,4 +1,4 @@
-<div class = "list-wrapper">
+<div class = "lista-spesa-wrapper-component-body">
     <div class = "list-components">
         <app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
         <app-totale-spesa [lista] = "lista"></app-totale-spesa>
@@ -7,9 +7,9 @@
         <br>
         <button (click) = "routeToListSelectionPage()">vai alla selezione delle liste</button>
     </div>
-    <div class = "confirmation-form" *ngIf = "guardForm">
-        <h3>You have unsaved changes!</h3>
-        <h3>Do you want to save befor exit?</h3>
+    <div class = "confirmation-form red-border-with-shadow-box" *ngIf = "guardForm">
+        <h3>Ci sono dei cambiamenti non salvati!</h3>
+        <h3 style = "margin-top: -10px">Salvare prima di uscire?</h3>
         <div class = "confirmation-form-buttons">
             <button mat-raised-button class = "primary-button confirmation-form-button" (click) = "isChangesConfirmed(true)">Salva ed esci</button>
             <button mat-raised-button class = "warning-button confirmation-form-button" (click) = "isChangesConfirmed(false)">esci senza salvare</button>

@@ -1,0 +1,21 @@
+.lista-spesa-body{
+
+}
+
+.list-table{
+width:100%;
+max-height: 400px;
+overflow: auto;
+}
+
+table{
+}
+
+th.mat-header-cell, td.mat-cell {
+    text-align: center !important;
+}
+
+th.mat-header-cell{
+    border-bottom: 1px solid;
+}
+
