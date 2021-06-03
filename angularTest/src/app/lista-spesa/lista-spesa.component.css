@@ -1,5 +1,4 @@
 .lista-spesa-body{
-
 }
 
 .list-table{
@@ -9,6 +8,7 @@ overflow: auto;
 }
 
 table{
+    max-width: 100%;
 }
 
 th.mat-header-cell, td.mat-cell {
