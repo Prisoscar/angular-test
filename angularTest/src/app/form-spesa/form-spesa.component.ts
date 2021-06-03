@@ -1,5 +1,6 @@
 import { ElementoLista } from './../lista-spesa-wrapper/elemento-lista';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ListaSpesaService } from '../services/lista-spesa.service';
 
 @Component({
   selector: 'app-form-spesa',
@@ -8,19 +9,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 })
 export class FormSpesaComponent implements OnInit {
 
-  @Input() idLista!: number; 
-  @Output() listaChange = new EventEmitter<ElementoLista> ();
+  idLista!: number; 
   element!: ElementoLista;
 
-  constructor() {}
+  constructor(private listaSpesaService: ListaSpesaService) {
+    this.idLista = 1;
+    this.element = new ElementoLista(this.idLista,"",0,0);
+  }
 
   ngOnInit(): void {
-
-  this.element = new ElementoLista(this.idLista,"",0,0);
   }
 
   addElement (){
-    if(this.element.nome && this.element.prezzo && this.element.quantita) this.listaChange.emit(this.element);
-    this.element = new ElementoLista(this.idLista, "",0,0);
+    console.log(this.element)
+    console.log("FormSpesaComponent.addElement => request to add new element to list " + this.idLista + ", with id " + this.element.id);
+    if(this.element.nome && this.element.prezzo && this.element.quantita) this.listaSpesaService.addElement(this.element);
+    this.element = new ElementoLista(this.idLista, "", 0, 0);
   }
 }

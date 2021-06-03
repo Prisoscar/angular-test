@@ -1,3 +1,4 @@
+import { ListaSpesaService } from './../services/lista-spesa.service';
 import { ElementoLista } from './../lista-spesa-wrapper/elemento-lista';
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 
@@ -8,11 +9,11 @@ import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@
 })
 export class ListaSpesaComponent implements OnInit {
 
-  @Input() lista!: ElementoLista[];
-  @Output() listaChange = new EventEmitter<ElementoLista>();
+  lista!: ElementoLista[];
   displayedColumns = ["nome", "quantita", "prezzo", "actions"];
 
-  constructor() {
+  constructor(private listaSpesaService :ListaSpesaService) {
+    listaSpesaService.listaObservable.subscribe(res => this.lista = res);
    }
 
   ngOnInit(): void {
@@ -20,6 +21,6 @@ export class ListaSpesaComponent implements OnInit {
 
   deleteElement(elemento: ElementoLista){
     console.log("ListaSpesaComponent.deleteElement => Requested deletion of element with id: " + elemento.id);
-    this.listaChange.emit(elemento);
+    this.listaSpesaService.deleteElement(elemento);
   }
 }

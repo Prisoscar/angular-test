@@ -1,8 +1,8 @@
 <div class = "lista-spesa-wrapper-component-body">
     <div class = "list-components">
-        <app-lista-spesa [lista] = "lista" (listaChange) = "deleteElement($event)"></app-lista-spesa>
-        <app-totale-spesa [lista] = "lista"></app-totale-spesa>
-        <app-form-spesa [idLista] = "idLista" (listaChange) = "addElement($event)"></app-form-spesa>
+        <app-lista-spesa></app-lista-spesa>
+        <app-totale-spesa></app-totale-spesa>
+        <app-form-spesa></app-form-spesa>
         <button (click) = "saveChanges()">Save Changes</button>
         <br>
         <button (click) = "routeToListSelectionPage()">vai alla selezione delle liste</button>

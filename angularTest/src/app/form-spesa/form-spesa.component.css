@@ -5,4 +5,21 @@
     margin:auto;
     text-align: center;
     align-items: center;
+    width: 100%;
+}
+
+.insert-elements{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+} 
+
+.form-element{
+    width: 30vw;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.form-button{
+    margin: 3vW;
 }
