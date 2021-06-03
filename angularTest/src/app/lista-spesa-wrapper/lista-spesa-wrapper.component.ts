@@ -109,13 +109,6 @@ export class ListaSpesaWrapperComponent implements OnInit {
     });*/
   }
 
-  /*saveChangesObs():Observable<any>{
-    let observableBatch: any []= [];
-    this.listaIniziale.forEach(element => observableBatch.push(this.http.delete<ElementoLista>(this.urlLista + "/" + element)));
-    this.lista.forEach(elemento => observableBatch.push(this.http.post<ElementoLista>(this.urlLista, elemento)));
-    return forkJoin(observableBatch);
-  }*/
-
   //this method saves changes if user agreed and route to selected route
   isChangesConfirmed(isConfirmed: boolean){
     console.log("ListaSpesaWrapperComponent.isChangesConfirmed => Has user confirmed changes before quit? " + isConfirmed);

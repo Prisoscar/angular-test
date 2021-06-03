@@ -3,9 +3,9 @@
         <app-lista-spesa></app-lista-spesa>
         <app-totale-spesa></app-totale-spesa>
         <app-form-spesa></app-form-spesa>
-        <button (click) = "saveChanges()">Save Changes</button>
+        <button class = "secunadry-button" (click) = "saveChanges()">Save Changes</button>
         <br>
-        <button (click) = "routeToListSelectionPage()">vai alla selezione delle liste</button>
+        <button class = "secunadry-button" (click) = "routeToListSelectionPage()">vai alla selezione delle liste</button>
     </div>
     <div class = "confirmation-form red-border-with-shadow-box" *ngIf = "guardForm">
         <h3>Ci sono dei cambiamenti non salvati!</h3>
