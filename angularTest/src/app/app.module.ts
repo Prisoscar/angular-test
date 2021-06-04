@@ -13,6 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SelettoreListaComponent } from './selettore-lista/selettore-lista.component';
 import { UnSavedListGuard } from './guards/un-saved-list.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SaveChangesBoxComponent } from './save-changes-box/save-changes-box.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListaSpesaComponent,
     FormSpesaComponent,
     TotaleSpesaComponent,
-    SelettoreListaComponent
+    SelettoreListaComponent,
+    SaveChangesBoxComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,

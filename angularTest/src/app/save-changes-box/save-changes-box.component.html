@@ -1,0 +1,12 @@
+<div class = "confirmation-form red-border-with-shadow-box">
+    <h3>Ci sono dei cambiamenti non salvati!</h3>
+    <h3 style = "margin-top: -10px">Salvare prima di uscire?</h3>
+    <div class = "confirmation-form-buttons">
+        <button mat-raised-button class = "primary-button confirmation-form-button" (click) = "routeAction(true, true)">Salva ed esci</button>
+        <button mat-raised-button class = "warning-button confirmation-form-button" (click) = "routeAction(true, false)">esci senza salvare</button>
+    </div> 
+    <div class = "delete-form-button-wrapper">
+        <button mat-raised-button class = "secondary-button delete-form-button" (click) = "routeAction(false, false)">Annulla</button>
+    </div>
+
+</div>

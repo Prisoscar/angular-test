@@ -11,7 +11,8 @@
     padding: 38px;
     display: flex;
     flex-direction: column;
-    min-width: 30vw; 
+    border: 4px solid green;
+    box-shadow: 2px 4px 12px green;
 }
 
 .list-selection-field{

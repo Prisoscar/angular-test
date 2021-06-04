@@ -1,0 +1,36 @@
+.confirmation-form{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin: auto;
+    left: 50%;
+    right: 50%;
+    top: 400px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+    min-width: 40vw;
+    background-color: #fff;
+    padding: 5vw;
+    z-index: 100;
+    max-width: 100%;
+}
+
+.confirmation-form-buttons{
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5cm;
+    padding-bottom: 0.5cm;
+}
+
+.confirmation-form-button{
+    margin: auto;
+    margin-left: 5vw;
+    margin-right: 5vw;
+}
+
+.delete-form-button-wrapper{
+    padding: 0.5cm;
+}
+
+.delete-form-button{
+}

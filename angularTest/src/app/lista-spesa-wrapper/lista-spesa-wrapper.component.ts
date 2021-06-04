@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ElementoLista } from './elemento-lista';
-import { HttpClient } from '@angular/common/http';
-import { ActivatedRoute, Router, UrlTree } from '@angular/router';
-import { concat, forkJoin, from, Observable, ObservableInput, of} from 'rxjs';
-import {concatMap} from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ListaSpesaService } from '../services/lista-spesa.service';
 
 @Component({
   selector: 'app-lista-spesa-wrapper',
@@ -12,107 +10,41 @@ import {concatMap} from 'rxjs/operators';
 })
 export class ListaSpesaWrapperComponent implements OnInit {
 
-  idLista!: number;
-  lista!: ElementoLista[];
-  elementiDaEliminare: number [] = [];
-  elementidaAggiungere: ElementoLista [] = [];
-  //listaIniziale: number [] = [];
   urlLista = "http://localhost:3000/elementiLista";
   guardForm = false;
   changesOccured = false;
   nextStateUrl!: string;
 
-  constructor(private http: HttpClient,
-    private route: ActivatedRoute,
-    private router: Router) {
+  constructor(private route: ActivatedRoute,
+    private router: Router,
+    private listaSpesaService: ListaSpesaService) {
+      let idList = this.route.snapshot.paramMap.get("idLista");
+      if (idList != null) this.listaSpesaService.idLista = + idList;
+      this.route.data.subscribe(data => { 
+        this.listaSpesaService.listaElementi = data.lista;      //il nome lista è stato dato nel routing module
+        this.listaSpesaService.setList();
+        console.log("ListaSpesaWrapperComponent.constructor.subscribe => list number " + this.listaSpesaService.idLista + " loaded.");
+        });  
   }
 
   ngOnInit(): void {
-    let idList = this.route.snapshot.paramMap.get("idLista");
-    if (idList != null) this.idLista = + idList;
-    this.route.data.subscribe(data => { 
-      this.lista = data.lista;      //il nome lista è stato dato nel routing module
-      //this.lista.forEach(elemento => this.listaIniziale.push(elemento.id));
-      console.log("ListaSpesaWrapperComponent.ngOnInit.subscribe => list number " + this.idLista + " loaded.");
-      });    
   }
-
-  /*initializeList(){
-    this.http.get<ElementoLista []>(this.urlLista + "?idLista=" + this.idLista).subscribe(res => {this.lista = res; console.log(res);} );
-  }
-
-  addElementToList(element: ElementoLista){
-    this.http.post<ElementoLista>(this.urlLista, element).subscribe(res => this.initializeList());
-  }
-
-  deleteElementFromList(element: ElementoLista){
-    this.http.delete<ElementoLista>(this.urlLista + "/" + element.id).subscribe(res =>{console.log(res)
-      this.initializeList();
-     });
-  }*/
 
   //this method routes to list selection page
   routeToListSelectionPage(){
     console.log("ListaSpesaWrapperComponent.routeToListSelectionPage => Routing request for /selezionalista")
+    this.changesOccured = this.listaSpesaService.changesOccurred;
     this.router.navigate(["/selezionalista"]);
   }
 
-  //this method delete an element from list
-  deleteElement (element: ElementoLista) : void {
-    try {
-      this.elementiDaEliminare.push(element.id);
-      this.lista.splice(this.lista.indexOf(element),1);
-      console.log("ListaSpesaWrapperComponent.deleteElement => deleted this element from list:" + element.id + ".");
-    }catch(e){
-      console.error("ListaSpesaWrapperComponent.deleteElement => error during deletion");
-    }    
-    this.lista = this.lista.concat([]);
-    this.changesOccured = true;
-    //this.deleteElementFromList(this.lista[index]);
-  }
-
-  //this method add an element to list
-  addElement(element: any){
-    this.lista = this.lista.concat([element]);
-    this.elementidaAggiungere.push(element);
-    this.changesOccured = true;
-    console.log("ListaSpesaWrapperComponent.addElement => added this element to list: ");
-    console.log(element);
-    //this.addElementToList(element);
-  }
-
-  //this method saves all changes on db
   saveChanges(){
-    if (!this.changesOccured) {
-      console.log("ListaSpesaWrapperComponent.saveChanges => there is nothing to save.")
-      return;   //in order to avoid useless rest calls
-    }
-    console.log("ListaSpesaWrapperComponent.saveChanges => Saving changes to db.");
-    let observableBatch: any [] = [];
-    this.elementiDaEliminare.forEach(elemento => observableBatch.push(this.http.delete<ElementoLista>(this.urlLista + "/" + elemento)));
-    this.elementidaAggiungere.forEach(elemento => observableBatch.push(this.http.post<ElementoLista>(this.urlLista, elemento)));
-
-    forkJoin(observableBatch).subscribe(res => {
-      console.log("ListaSpesaWrapperComponent.saveChanges => saved successfully");
-      this.changesOccured = false;
-    })
-    /*if (observableBatchDelete.length == 0) {
-      console.log("ListaSpesaWrapperComponent.saveChanges => Inserting first element/s in an empty list.");
-      forkJoin(observableBatchInsert).subscribe(res => {
-        console.log("ListaSpesaWrapperComponent.saveChanges.subscribe => insert forkjoin executed.");
-        this.changesOccured = false;
-      });
-    }else forkJoin(observableBatchDelete).subscribe(res => {
-            console.log("ListaSpesaWrapperComponent.saveChanges.subscribe => delete forkjoin executed.");
-            forkJoin(observableBatchInsert).subscribe(res => console.log("ListaSpesaWrapperComponent.saveChanges.subscribe => insert forkjoin executed."))
-            this.changesOccured = false;
-    });*/
-  }
+    this.listaSpesaService.saveChanges();
+  } 
 
   //this method saves changes if user agreed and route to selected route
   isChangesConfirmed(isConfirmed: boolean){
     console.log("ListaSpesaWrapperComponent.isChangesConfirmed => Has user confirmed changes before quit? " + isConfirmed);
-    if(isConfirmed) this.saveChanges();
+    if(isConfirmed) this.listaSpesaService.saveChanges();
     console.log("executing route");    
     this.changesOccured = false;
     this.router.navigate([this.nextStateUrl]);
@@ -130,4 +62,24 @@ export class ListaSpesaWrapperComponent implements OnInit {
     console.log("ListaSpesaWrapperComponent.deleteRouting => Routing request deleted from user.")
     this.guardForm = !this.guardForm; 
   }
+
+  //if the save changes page is shown backgroun will be inactivated and blurred
+  calculateClasses(){
+    if (this.guardForm) return {'blurred-background': true };
+    else return {'blurred-backgound': false };
+  } 
+
+  //if user delete the save before exit box
+  ignoreEvent(event: any){
+    console.log("ListaSpesaWrapperComponent.ignoreEvent => navigation deleted from save-changes-box-component.");
+    this.guardForm = false;
+  } 
+
+  //if user saved data on the save before exit box
+  routeEvent(event: any){
+    console.log("ListaSpesaWrapperComponent.saveBeforeExit => saving before exit confirmend by save-changes-box-component? " + event);
+    if(event) this.saveChanges();
+    this.changesOccured = false;
+    this.router.navigate([this.nextStateUrl]);
+  } 
 }

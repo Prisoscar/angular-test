@@ -1,21 +1,14 @@
 <div class = "lista-spesa-wrapper-component-body">
-    <div class = "list-components">
-        <app-lista-spesa></app-lista-spesa>
-        <app-totale-spesa></app-totale-spesa>
-        <app-form-spesa></app-form-spesa>
-        <button class = "secunadry-button" (click) = "saveChanges()">Save Changes</button>
-        <br>
-        <button class = "secunadry-button" (click) = "routeToListSelectionPage()">vai alla selezione delle liste</button>
-    </div>
-    <div class = "confirmation-form red-border-with-shadow-box" *ngIf = "guardForm">
-        <h3>Ci sono dei cambiamenti non salvati!</h3>
-        <h3 style = "margin-top: -10px">Salvare prima di uscire?</h3>
-        <div class = "confirmation-form-buttons">
-            <button mat-raised-button class = "primary-button confirmation-form-button" (click) = "isChangesConfirmed(true)">Salva ed esci</button>
-            <button mat-raised-button class = "warning-button confirmation-form-button" (click) = "isChangesConfirmed(false)">esci senza salvare</button>
-        </div> 
-        <div class = "delete-form-button-wrapper">
-            <button mat-raised-button class = "secondary-button delete-form-button" (click) = "deleteRouting()">Annulla</button>
+    <div [ngClass] = "calculateClasses()" >    
+        <div class = "list-components">
+            <app-lista-spesa></app-lista-spesa>
+            <app-totale-spesa></app-totale-spesa>
+            <app-form-spesa></app-form-spesa>
+            <div class = "end-task-buttons">
+                <button class = "secondary-button end-task-button save-changes" mat-raised-button (click) = "saveChanges()">Salva i cambiamenti</button>
+                <button class = "secondary-button end-task-button" mat-raised-button (click) = "routeToListSelectionPage()">torna alla selezione liste</button>
+            </div>
         </div>
     </div>
+    <app-save-changes-box *ngIf = "guardForm" [nextStateUrl] = "nextStateUrl" (route) = "routeEvent($event)" (delete) = "ignoreEvent($event)" ></app-save-changes-box>
 </div>

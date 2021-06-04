@@ -2,45 +2,36 @@
     display: flex;
     flex-direction: column;
     max-width: 18in;
-    justify-content: ;
+    justify-content: center;
+    max-width: 100%;
 }
+
+.blurred-background{
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+} 
 
 .list-components{
 }
 
-.confirmation-form{
+.end-task-buttons{
     display: flex;
-    flex-direction: column;
-    position: absolute;
-    margin: auto;
-    left: 50%;
-    right: 50%;
-    top: 400px;
-    text-align: center;
-    transform: translate(-50%, -50%);
-    min-width: 50vw;
-    background-color: #fff;
-    padding: 5vw;
-    z-index: 100;
+    justify-content: center;
+    padding: 20px;
     max-width: 100%;
 }
 
-.confirmation-form-buttons{
-    display: flex;
-    justify-content: center;
-    padding-top: 0.5cm;
-    padding-bottom: 0.5cm;
-}
+.end-task-button{
+    max-width: 50%;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 1px solid blueviolet !important;
+    box-shadow: 1px 1px 2px blueviolet !important;
+} 
 
-.confirmation-form-button{
-    margin: auto;
-    margin-left: 5vw;
-    margin-right: 5vw;
-}
-
-.delete-form-button-wrapper{
-    padding: 0.5cm;
-}
-
-.delete-form-button{
+.save-changes{
+    border: 1px solid green !important;
+    box-shadow: 1px 1px 2px green !important;
 }

@@ -13,8 +13,8 @@ export class FormSpesaComponent implements OnInit {
   element!: ElementoLista;
 
   constructor(private listaSpesaService: ListaSpesaService) {
-    this.idLista = 1;
-    this.element = new ElementoLista(this.idLista,"",0,0);
+    this.idLista = listaSpesaService.idLista;
+    this.element = new ElementoLista(this.idLista,"", NaN, NaN);
   }
 
   ngOnInit(): void {
@@ -24,6 +24,6 @@ export class FormSpesaComponent implements OnInit {
     console.log(this.element)
     console.log("FormSpesaComponent.addElement => request to add new element to list " + this.idLista + ", with id " + this.element.id);
     if(this.element.nome && this.element.prezzo && this.element.quantita) this.listaSpesaService.addElement(this.element);
-    this.element = new ElementoLista(this.idLista, "", 0, 0);
+    this.element = new ElementoLista(this.idLista, "", NaN, NaN);
   }
 }
