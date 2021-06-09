@@ -16,6 +16,7 @@ export class ListaSpesaService {
   changesOccurred = false;
   elementiDaEliminare: number [] = [];
   elementidaAggiungere: ElementoLista [] = [];
+  nomeLista!: string;
   urlLista = "http://localhost:3000/elementiLista";
 
   constructor(private http: HttpClient) {    
@@ -40,19 +41,6 @@ export class ListaSpesaService {
     this.elementiDaEliminare.push(element.id);
     this.changesOccurred = true;
   } 
-
-  /*saveChangesTest(){
-    let observableBatch: any [] = [];
-    this.elementidaAggiungere.forEach(elemento => observableBatch.push(this.http.post<ElementoLista>(this.urlLista, elemento)));
-    this.elementiDaEliminare.forEach(elemento => observableBatch.push(this.http.delete<ElementoLista>(this.urlLista + "/" + elemento)));
-    
-    forkJoin(observableBatch).subscribe(res => {
-      console.log("ListaSpesaServiceComponent.saveChanges => saved successfully");
-      this.changesOccurred = false;
-      this.elementiDaEliminare = [];
-      this.elementidaAggiungere = [];  
-    })
-  }*/
 
   saveChanges():BehaviorSubject<any>{
     let isSaving = new BehaviorSubject(true);

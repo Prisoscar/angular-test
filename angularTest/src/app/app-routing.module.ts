@@ -5,12 +5,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListaResolver } from './lista-spesa-wrapper/lista-resolver';
 import { UnSavedListGuard } from './guards/un-saved-list.guard';
+import { ElementiListaResolver } from './lista-spesa-wrapper/elementi-lista-resolver';
 
 const routes: Routes = [
   {path: "", redirectTo: "/selezionalista", pathMatch: "full"},
   {path: "login", component: LoginFormComponent}, 
   {path: "selezionalista", component: SelettoreListaComponent},
-  {path: "listaspesa/:idLista", component: ListaSpesaWrapperComponent, resolve: {lista: ListaResolver}, canDeactivate: [UnSavedListGuard] }
+  {path: "listaspesa/:idLista", component: ListaSpesaWrapperComponent, resolve: {lista: ListaResolver, elementiLista: ElementiListaResolver}, canDeactivate: [UnSavedListGuard] }
 ];
 
 @NgModule({

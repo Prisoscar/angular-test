@@ -15,14 +15,16 @@ export class ListaSpesaWrapperComponent implements OnInit {
   changesOccured = false;
   nextStateUrl!: string;
 
+  //Assign to lista-spesa-service all attributes taken from json-server
   constructor(private route: ActivatedRoute,
     private router: Router,
     private listaSpesaService: ListaSpesaService) {
       let idList = this.route.snapshot.paramMap.get("idLista");
       if (idList != null) this.listaSpesaService.idLista = + idList;
       this.route.data.subscribe(data => { 
-        this.listaSpesaService.listaElementi = data.lista;      //il nome lista è stato dato nel routing module
+        this.listaSpesaService.listaElementi = data.elementiLista;      //il nome elementiLista è stato dato nel routing module
         this.listaSpesaService.setList();
+        this.listaSpesaService.nomeLista = data.lista.nome;
         console.log("ListaSpesaWrapperComponent.constructor.subscribe => list number " + this.listaSpesaService.idLista + " loaded.");
         });  
   }
@@ -78,15 +80,19 @@ export class ListaSpesaWrapperComponent implements OnInit {
   //if user saved data on the save before exit box
   routeEvent(event: any){
     console.log("ListaSpesaWrapperComponent.saveBeforeExit => saving before exit confirmend by save-changes-box-component? " + event);
-    if(event) this.listaSpesaService.saveChanges().subscribe(
-    (res) =>{ if(res) console.log("Sto salvando"); if (!res){console.log("Ho finito di salvare"); } },
-    (error) =>{},
-    () =>{
-      console.log("Esecuzione completata");
-      //console.log(res);
+    if(event) {
+        this.listaSpesaService.saveChanges().subscribe(
+      (res) =>{},
+      (error) =>{},
+      () =>{
+        console.log("Esecuzione completata");
+        this.changesOccured = false;
+        this.router.navigate([this.nextStateUrl]);
+      });
+    }
+    else {
       this.changesOccured = false;
       this.router.navigate([this.nextStateUrl]);
-    });
-    else this.router.navigate([this.nextStateUrl]);
+    }     
   } 
 }

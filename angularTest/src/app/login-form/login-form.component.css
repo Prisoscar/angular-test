@@ -8,8 +8,33 @@
 } 
 
 .login-form{
+    padding: 10px;
+}
+
+.form-element{    
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.error-message{
+    color: red;
+    font-size: 0.65em;    
+    margin-top: -0.7em;    
+}
+
+.user-inputs{
+    display: flex;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.field-div{
+    width: 50%;
+}
+
+.error-div{
 }
 
 .access-button{
-    margin-bottom: 25px;
+    margin-bottom: 45px;
 }

@@ -1,19 +1,33 @@
 <div class = "login-component-body blueviolet-border-with-shadow-box">
+    <form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "performLogin()">        
     <h3>Login</h3>
-    <form class="login-form">
         <div class="user-inputs">
-            <mat-form-field class = "form-element" [floatLabel]="'always'">
-                <mat-label for = "username" >Username</mat-label>
-                <input matInput required minlength="3" maxlength="30" id = "username" type = "text"  [(ngModel)] = "user.username" placeholder="Username">
-            </mat-form-field>
-            <mat-form-field class = "form-element" [floatLabel]="'always'">
-                <mat-label for = "password" >Password</mat-label>
-                <input matInput id = "password" type = "password"  [(ngModel)] = "user.password" placeholder="Password">
-            </mat-form-field>
+            <div class = "field-div">
+                <mat-form-field class = "form-element" [floatLabel]="'always'">
+                    <mat-label for = "username" >Username</mat-label>
+                    <input matInput required id = "username" type = "text" name = "username" formControlName = "username" placeholder = "admin">
+                </mat-form-field>
+                <div class = "error-div" *ngIf = "loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+                    <p *ngIf = "loginForm.controls['username'].hasError('required')" class = "error-message">username obbligatorio</p>
+                    <p *ngIf = "loginForm.controls['username'].hasError('minlength')" class = "error-message">inserire almeno 5 caratteri</p>
+                    <p *ngIf = "loginForm.controls['username'].hasError('maxlength')" class = "error-message">inserire al massimo 50 caratteri</p>
+                    <p *ngIf = "loginForm.controls['username'].hasError('pattern')" class = "error-message">sono ammessi solo i seguenti caratteri speciali: -_£$%&€</p>
+                </div>
+            </div>
+            <div class = "field-div">
+                <mat-form-field class = "form-element" [floatLabel]="'always'">
+                    <mat-label for = "password" >Password</mat-label>
+                    <input matInput required id = "password" name = "password" type = "password" formControlName = "password" placeholder = "admin">
+                </mat-form-field>
+                <div class = "error-div" *ngIf = "loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+                    <p *ngIf = "loginForm.controls['password'].hasError('required')" class = "error-message">password obbligatoria</p>
+                    <p *ngIf = "loginForm.controls['password'].hasError('minlength')" class = "error-message">inserire almeno 5 caratteri</p>
+                    <p *ngIf = "loginForm.controls['password'].hasError('maxlength')" class = "error-message">inserire al massimo 128 caratteri</p>
+                </div>
+            </div>
         </div>
         <div class="buttons">
-            <button mat-raised-button class="blueviolet-primary-button access-button">Accedi</button>
+            <button mat-raised-button type = "submit" class="blueviolet-primary-button access-button">Accedi</button>
         </div>
-
     </form>
 </div>

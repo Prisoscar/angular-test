@@ -14,11 +14,11 @@
   "liste": [
     {
       "id": 1,
-      "nome": "lista1"
+      "nome": "Lista # 1"
     },
     {
       "id": 2,
-      "nome": "lista2"
+      "nome": "Lista # 2"
     }
   ],
   "elementiLista": [

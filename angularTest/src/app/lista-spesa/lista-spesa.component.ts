@@ -11,9 +11,11 @@ export class ListaSpesaComponent implements OnInit {
 
   lista!: ElementoLista[];
   displayedColumns = ["nome", "quantita", "prezzo", "actions"];
+  nomeLista: string;
 
   constructor(private listaSpesaService :ListaSpesaService) {
     listaSpesaService.listaObservable.subscribe(res => this.lista = res);
+    this.nomeLista = this.listaSpesaService.nomeLista;
    }
 
   ngOnInit(): void {

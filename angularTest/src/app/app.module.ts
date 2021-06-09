@@ -15,6 +15,7 @@ import { UnSavedListGuard } from './guards/un-saved-list.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SaveChangesBoxComponent } from './save-changes-box/save-changes-box.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { LoginFormComponent } from './login-form/login-form.component';
     HttpClientModule, 
     BrowserAnimationsModule,
     MaterialModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [UnSavedListGuard],
   bootstrap: [AppComponent]
