@@ -78,15 +78,15 @@ export class ListaSpesaWrapperComponent implements OnInit {
   //if user saved data on the save before exit box
   routeEvent(event: any){
     console.log("ListaSpesaWrapperComponent.saveBeforeExit => saving before exit confirmend by save-changes-box-component? " + event);
-    if(event) this.listaSpesaService.saveChangesTest().subscribe(
-      (res) =>{ if(res) console.log("Sto salvando"); if (!res){console.log("Ho finito di salvare"); this.router.navigate([this.nextStateUrl]);} },
-      (error) =>{},
-      () =>{
-        console.log("Esecuzione completata");
-        //console.log(res);
-        this.changesOccured = false;
-        this.router.navigate([this.nextStateUrl]);
-     });
+    if(event) this.listaSpesaService.saveChanges().subscribe(
+    (res) =>{ if(res) console.log("Sto salvando"); if (!res){console.log("Ho finito di salvare"); } },
+    (error) =>{},
+    () =>{
+      console.log("Esecuzione completata");
+      //console.log(res);
+      this.changesOccured = false;
+      this.router.navigate([this.nextStateUrl]);
+    });
     else this.router.navigate([this.nextStateUrl]);
   } 
 }
