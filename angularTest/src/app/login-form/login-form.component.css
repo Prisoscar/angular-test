@@ -5,9 +5,11 @@
     justify-content: center;
     margin-top: 30px;
     margin-bottom: 30px;
-    border: 4px solid blueviolet;
-    box-shadow: 2px 4px 12px blueviolet;
 } 
 
 .login-form{
+}
+
+.access-button{
+    margin-bottom: 25px;
 }

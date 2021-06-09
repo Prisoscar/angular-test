@@ -27,11 +27,7 @@
     width: 40%;
     margin-left: 5%;
     margin-right: 5%;
-    border: 1px solid blueviolet !important;
-    box-shadow: 1px 1px 2px blueviolet !important;
 } 
 
 .save-changes{
-    border: 1px solid green !important;
-    box-shadow: 1px 1px 2px green !important;
 }

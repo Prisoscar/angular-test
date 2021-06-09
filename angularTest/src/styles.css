@@ -17,13 +17,36 @@ label, p, button, h1, h2, h3, h4, h5, h6, input,table{
 .warning-button{
     background-color: red;
     color: white;
+    box-shadow: 1px 1px 2px red !important;
 }
 
-.primary-button{
+.red-primary-button{
     background-color: white;
     color: red;
     border: 1px solid red !important;
+    box-shadow: 1px 1px 2px red !important;
 }
+
+.blueviolet-primary-button{
+    background-color: white;
+    color: blueviolet;
+    border: 1px solid blueviolet !important;
+    box-shadow: 1px 1px 2px blueviolet !important;
+}
+
+.green-primary-button{
+    background-color: white;
+    color: green;
+    border: 1px solid green !important;
+    box-shadow: 1px 1px 2px green !important;
+} 
+
+.bordeaux-primary-button{   
+    background-color: white;
+    color: #a5236a;
+    border: 1px solid #a5236a !important;
+    box-shadow: 1px 1px 2px #a5236a !important; 
+} 
 
 .secondary-button{
     background-color: white;
@@ -36,3 +59,21 @@ label, p, button, h1, h2, h3, h4, h5, h6, input,table{
     border: 4px solid red;
     box-shadow: 2px 4px 12px red;
 }
+
+.blueviolet-border-with-shadow-box{
+    border-radius: 15px;
+    border: 4px solid blueviolet;
+    box-shadow: 2px 4px 12px blueviolet;
+} 
+
+.green-border-with-shadow-box{
+    border-radius: 15px;
+    border: 4px solid blueviolet;
+    box-shadow: 2px 4px 12px blueviolet;
+} 
+
+.bordeaux-border-with-shadow-box{
+    border-radius: 15px;
+    border: 4px solid #a5236a;
+    box-shadow: 2px 4px 12px #a5236a;
+} 

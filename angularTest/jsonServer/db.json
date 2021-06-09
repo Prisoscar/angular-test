@@ -23,13 +23,6 @@
   ],
   "elementiLista": [
     {
-      "idLista": 2,
-      "id": 90370398596216500,
-      "nome": "tyu",
-      "quantita": 6,
-      "prezzo": 6
-    },
-    {
       "idLista": 1,
       "id": 46758074663571400,
       "nome": "Pasta",
@@ -45,13 +38,6 @@
     },
     {
       "idLista": 2,
-      "id": 80935761210619140,
-      "nome": "bnv",
-      "quantita": 6,
-      "prezzo": 6
-    },
-    {
-      "idLista": 2,
       "id": 60762177719675336,
       "nome": "Yogurt",
       "quantita": 2,
@@ -63,6 +49,27 @@
       "nome": "Patate",
       "quantita": 3,
       "prezzo": 1.2
+    },
+    {
+      "idLista": 2,
+      "id": 84425719609476770,
+      "nome": "Gorgonzola",
+      "quantita": 2,
+      "prezzo": 6.5
+    },
+    {
+      "idLista": 2,
+      "id": 23060113071081236,
+      "nome": "Salmone Affumicato",
+      "quantita": 2,
+      "prezzo": 7
+    },
+    {
+      "idLista": 2,
+      "id": 71095795666336904,
+      "nome": "Grano Saraceno",
+      "quantita": 20,
+      "prezzo": 0.7
     }
   ]
 }

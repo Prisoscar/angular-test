@@ -8,7 +8,7 @@ import { ListaSpesaWrapperComponent } from './lista-spesa-wrapper/lista-spesa-wr
 import { ListaSpesaComponent } from './lista-spesa/lista-spesa.component';
 import { FormSpesaComponent } from './form-spesa/form-spesa.component';
 import { TotaleSpesaComponent } from './totale-spesa/totale-spesa.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SelettoreListaComponent } from './selettore-lista/selettore-lista.component';
 import { UnSavedListGuard } from './guards/un-saved-list.guard';
@@ -33,7 +33,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     FormsModule, 
     HttpClientModule, 
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule, 
+    ReactiveFormsModule
   ],
   providers: [UnSavedListGuard],
   bootstrap: [AppComponent]

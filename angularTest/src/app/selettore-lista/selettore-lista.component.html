@@ -1,5 +1,5 @@
 <div class = "selettore-lista-body">
-    <div class = "list-selection-form-wrapper red-border-with-shadow-box">
+    <div class = "list-selection-form-wrapper bordeaux-border-with-shadow-box">
         <mat-form-field class = "list-selection-field">
             <mat-label class = "label-lists-selection">Seleziona una lista</mat-label>
             <mat-select class = "select-list-selection" [(ngModel)]="idLista" required>
@@ -7,6 +7,6 @@
             </mat-select>
         </mat-form-field>
         <mat-error *ngIf="errore" class = "error-label-lists-selection">Perfavore seleziona una lista</mat-error>
-            <button mat-raised-button class = "secondary-button confirm-button" (click) = "confirmList()">Conferma</button>
+            <button mat-raised-button class = "bordeaux-primary-button confirm-button" (click) = "confirmList()">Conferma</button>
     </div>
 </div>
