@@ -1,33 +1,61 @@
-<div class = "login-component-body blueviolet-border-with-shadow-box">
+<!--Main Div-->
+<div [ngClass] = "calculateClasses()" class = "login-component-body blueviolet-border-with-shadow-box">
+
+
+    <!--Main Form-->
     <form class="login-form" [formGroup] = "loginForm" (ngSubmit) = "performLogin()">        
     <h3>Login</h3>
         <div class="user-inputs">
+
+            <!--fields div-->
             <div class = "field-div">
+
+                <!--username field with errors label-->
                 <mat-form-field class = "form-element" [floatLabel]="'always'">
                     <mat-label for = "username" >Username</mat-label>
-                    <input matInput required id = "username" type = "text" name = "username" formControlName = "username" placeholder = "admin">
+                    <input matInput required id = "username" type = "text" name = "username" formControlName="username" placeholder = "admin">
                 </mat-form-field>
-                <div class = "error-div" *ngIf = "loginForm.controls['username'].invalid && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
+
+
+                <!--username control-->
+                <div class = "error-div" *ngIf = "invalidUsername && (loginForm.controls['username'].dirty || loginForm.controls['username'].touched)">
                     <p *ngIf = "loginForm.controls['username'].hasError('required')" class = "error-message">username obbligatorio</p>
                     <p *ngIf = "loginForm.controls['username'].hasError('minlength')" class = "error-message">inserire almeno 5 caratteri</p>
                     <p *ngIf = "loginForm.controls['username'].hasError('maxlength')" class = "error-message">inserire al massimo 50 caratteri</p>
                     <p *ngIf = "loginForm.controls['username'].hasError('pattern')" class = "error-message">sono ammessi solo i seguenti caratteri speciali: -_£$%&€</p>
                 </div>
             </div>
+
+            
+            <!--password field with errors label-->
             <div class = "field-div">
                 <mat-form-field class = "form-element" [floatLabel]="'always'">
                     <mat-label for = "password" >Password</mat-label>
                     <input matInput required id = "password" name = "password" type = "password" formControlName = "password" placeholder = "admin">
                 </mat-form-field>
-                <div class = "error-div" *ngIf = "loginForm.controls['password'].invalid && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
+
+                <!--password control-->
+                <div class = "error-div" *ngIf = "invalidPassword && (loginForm.controls['password'].dirty || loginForm.controls['password'].touched)">
                     <p *ngIf = "loginForm.controls['password'].hasError('required')" class = "error-message">password obbligatoria</p>
                     <p *ngIf = "loginForm.controls['password'].hasError('minlength')" class = "error-message">inserire almeno 5 caratteri</p>
                     <p *ngIf = "loginForm.controls['password'].hasError('maxlength')" class = "error-message">inserire al massimo 128 caratteri</p>
                 </div>
             </div>
         </div>
+
+        <!--db mismatch-->
+        <p *ngIf = "badCredentials" class = "error-message user-password-error">user o password errati</p>
+
+        
+        <!--submit button-->
         <div class="buttons">
             <button mat-raised-button type = "submit" class="blueviolet-primary-button access-button">Accedi</button>
         </div>
     </form>
 </div>
+{{badCredentials}}
+
+
+<!--spinner component-->
+<ngx-loading-x class = "ngx-overlai" [show]="load" spinnerType = "circle-spinner" spinnerColor = "blueviolet" [spinnerSize] = "250">
+</ngx-loading-x>

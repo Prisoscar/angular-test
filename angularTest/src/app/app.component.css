@@ -37,20 +37,22 @@
 
 #first-title-word{
     padding: 0.125cm;
+    border-top: 2px solid #ff000000;
     border-left: 12px double red;
     border-bottom: 2px solid red;
-    border-top: -2px solid #ff000000;
 }
 
 #second-title-word{
     padding: 0.125cm;
     border-top: 2px solid #ff000000;
+    border-bottom: 2px solid #ff000000;
 }
 
 #third-title-word{
     padding: 0.125cm;
     border-right: 12px double red;
     border-top: 2px solid red;
+    border-bottom: 2px solid #ff000000;
 }
 
 .main-header-icon{
@@ -70,11 +72,12 @@
     padding-bottom: 0.3cm;
 }
 
-.main-footer{
+.main-footer{ position: relative;
     width: 100%;
     display: flex;
     min-height: 2.5cm;
     background-color: #000;
+    z-index: 2511 !important;
 }
 
 .inner-footer{

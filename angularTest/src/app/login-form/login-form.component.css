@@ -7,6 +7,12 @@
     margin-bottom: 30px;
 } 
 
+.blurred-background{
+    filter: blur(3px);
+    pointer-events: none;
+    user-select: none;
+} 
+
 .login-form{
     padding: 10px;
 }
@@ -36,5 +42,10 @@
 }
 
 .access-button{
-    margin-bottom: 45px;
+    margin-bottom: 3em;
+}
+
+.ngx-overlay{
+    background-color: red !important;
+    cursor: default !important;
 }

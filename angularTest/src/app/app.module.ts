@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MaterialModule } from './material/material.module'
@@ -16,6 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SaveChangesBoxComponent } from './save-changes-box/save-changes-box.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ToastrModule } from 'ngx-toastr';
+import { NgxLoadingXModule } from 'ngx-loading-x';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { ToastrModule } from 'ngx-toastr';
     LoginFormComponent
   ],
   imports: [
-    BrowserModule,
+BrowserModule,
     AppRoutingModule,
     FormsModule, 
     HttpClientModule, 
@@ -38,6 +39,10 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(), // ToastrModule added
+    NgxLoadingXModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [UnSavedListGuard],
   bootstrap: [AppComponent]
