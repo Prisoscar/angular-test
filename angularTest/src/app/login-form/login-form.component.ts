@@ -3,6 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from './user';
+import { LocalStorageService } from './../services/local-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -22,32 +24,33 @@ export class LoginFormComponent implements OnInit {
   invalidUsername = this.loginForm.controls['username'].invalid;
   invalidPassword = this.loginForm.controls['password'].invalid;
 
-  constructor(private toastrServices: ToastrServices, private http: HttpClient) { }
+  constructor(
+    private toastrServices: ToastrServices,
+    private http: HttpClient,
+    private localStorageService: LocalStorageService,
+    private router: Router
+      ) { }
 
 
   ngOnInit(): void {
   }
+
   getFormValue(key: string) {
     return this.loginForm.get(key)?.value;
   }
- 
-
 
   performLogin() {
     this.load = true;
-    this.badCredentials = false;
     var url = `${this.urlUtenti}?username=${this.getFormValue("username")}&password=${this.getFormValue("password")}`;
-
-
-
     console.log("LoginFormComponent.performLogin => performingLogin: ", url);
     this.http.get<User>(url).subscribe(res => {
+      if(res.id){
+        this.localStorageService.set("user", res.id);
+      }else{
+        this.badCredentials = true;
+      }        
       this.load = false;
-      this.badCredentials = res.id ? false : true;
     });
-    //return this.http.get<Lista []>(this.urlListe + "/" + idLista);
-    //this.toastrServices.loadingToast("messaggio","titolo")
-    console.log(this.loginForm.value);
   }
 
   calculateClasses() {

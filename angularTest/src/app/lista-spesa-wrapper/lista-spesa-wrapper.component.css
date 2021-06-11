@@ -6,12 +6,6 @@
     max-width: 100%;
 }
 
-.blurred-background{
-    filter: blur(3px);
-    pointer-events: none;
-    user-select: none;
-} 
-
 .list-components{
 }
 
