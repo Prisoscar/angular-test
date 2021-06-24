@@ -14,7 +14,7 @@ const routes: Routes = [
     { path: 'Tools', globalCanActivate: [AuthGuard], component: ToolsComponent, children: [ { path: 'ToolA', ... } ] },
   ]},  */
   {path: "login", component: LoginFormComponent},
-  {path: "", CanActivateChild: [AuthGuard], children: [ 
+  {path: "", canActivateChild: [AuthGuard], children: [ 
     {path: "selezionalista", component: SelettoreListaComponent},
     {path: "listaspesa/:idLista", component: ListaSpesaWrapperComponent,
      resolve: {lista: ListaResolver, elementiLista: ElementiListaResolver},
